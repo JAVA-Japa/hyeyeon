@@ -14,6 +14,7 @@ public class baekjoon2003 {
 		int M = Integer.parseInt(st1.nextToken());
 		int[] arr = new int[N];
 		StringTokenizer st2 = new StringTokenizer(br.readLine());
+		
 		for(int i=0;i<N;i++) 
 			arr[i] = Integer.parseInt(st2.nextToken());
 		
@@ -35,6 +36,5 @@ public class baekjoon2003 {
 		}
 		
 		System.out.println(cnt);
-		
 	}
 }

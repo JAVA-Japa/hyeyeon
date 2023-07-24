@@ -18,7 +18,6 @@ public class baekjoon2015 {
 		for(int i=1;i<=N;i++)
 			arr[i] = Integer.parseInt(st2.nextToken());
 		
-	
 		int start = 1;
 		int end = 1;
 		int sum = 0;
