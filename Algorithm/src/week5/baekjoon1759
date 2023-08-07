@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class baekjoon1759 {
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st1 = new StringTokenizer(br.readLine());
+		
+		int L = Integer.parseInt(st1.nextToken());
+		int C = Integer.parseInt(st1.nextToken());
+		String[] arr = new String[C];
+		StringTokenizer st2 = new StringTokenizer(br.readLine());
+		for(int i=0;i<C;i++) {
+			arr[i] = st2.nextToken();
+		}
+		
+		Arrays.sort(arr);
+		recur(arr, new String[L], new boolean[C], 0, 0, L);
+		
+		
+	}
+	
+	public static void recur(String[] arr, String[] out, boolean[] visited, int start, int depth, int r) {
+		if(depth == r && check(out)) {
+			for(int i=0;i<r;i++) 
+				System.out.print(out[i]);
+			System.out.println();
+			return;
+		}
+		
+		for(int i=start;i<arr.length;i++) {
+			if(!visited[i]) {
+				visited[i] = true; 
+				out[depth] = arr[i];
+				recur(arr, out, visited, i+1, depth+1, r);
+				visited[i] = false;
+			}
+		}
+	}
+	
+	public static boolean check(String[] s) {
+		int cnt1=0;
+		int cnt2=0;
+		for(int i=0;i<s.length;i++) {
+			char c = s[i].charAt(0);
+			if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u')
+				cnt1++;
+			else
+				cnt2++;
+		}
+		if(cnt1>=1&&cnt2>=2)
+			return true;
+		return false;
+	}
+}
